@@ -1,75 +1,82 @@
 import { createClient } from "next-sanity";
+import * as fs from "fs";
+import * as path from "path";
 
-const config = {
+// Load .env file manually so we don't need dotenv installed
+const envPath = path.resolve(process.cwd(), ".env");
+if (fs.existsSync(envPath)) {
+  const envFile = fs.readFileSync(envPath, "utf-8");
+  envFile.split("\n").forEach((line) => {
+    const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+    if (match) {
+      let value = match[2];
+      // remove quotes if any
+      if (value.startsWith('"') && value.endsWith('"')) {
+        value = value.slice(1, -1);
+      }
+      process.env[match[1]] = value;
+    }
+  });
+}
+
+const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-03-16",
-  useCdn: process.env.NODE_ENV === "production",
-  token: process.env.SANITY_API_TOKEN || "", // Needed for creating orders
-};
+  apiVersion: "2024-03-16",
+  useCdn: false,
+  token: process.env.SANITY_API_TOKEN || "",
+});
 
-export const sanityClient = config.projectId ? createClient(config) : null;
-
-// Fallback static data
 const pizzas = [
   {
     name: "Hawaiian",
     description: "Beef Pepperoni, Pineapple, Garlic Sauce, Tomato Sauce & Cheese.",
     price: "Reg ₦15,600 / Fam ₦18,600",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Vegetable Supreme",
     description: "Tomatoes, Onion, Red Peppers, Green Peppers, Olives, Mushrooms, Sweet corn, Tomato Sauce, Garlic Sauce & Cheese.",
     price: "Reg ₦14,800 / Fam ₦17,800",
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "BBQ Chicken Special",
     description: "BBQ Chicken, Onions, Red Peppers, Green Peppers, Tomato Sauce, Garlic Sauce, BBQ Sauce & Cheese.",
     price: "Reg ₦15,800 / Fam ₦18,800",
-    image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Chicken Mexicana",
     description: "Chicken Breast, Red Peppers, Green peppers, Onions, Tartar Sauce, Chilli Sauce topped with Chilli flakes & Cheese.",
     price: "Reg ₦15,700 / Fam ₦18,700",
-    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Tandoori Spicy Chicken Pizza",
     description: "Tandoori Chicken Cubes, Red peppers, Onions, Tomato Sauce, Chilli Sauce & Cheese.",
     price: "Reg ₦15,500 / Fam ₦18,000",
-    image: "https://images.unsplash.com/photo-1604381536197-5992414777e4?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Pepperoni Pizza",
     description: "Sliced Beef Pepperoni, Tomato Sauce & Mozzarella Cheese.",
     price: "Reg ₦14,800 / Fam ₦17,000",
-    image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Arabica Pizza",
     description: "Sliced Beef Pepperoni, Red Peppers, Onions, Mushrooms, Chilli Sauce, Tomato Sauce & Cheese.",
     price: "Reg ₦15,800 / Fam ₦18,800",
-    image: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Beef Special",
     description: "Special Minced Beef, Green Peppers, Onions, Tomato Sauce, BBQ Sauce, Garlic Sauce & Cheese.",
     price: "Reg ₦15,800 / Fam ₦18,800",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
   },
   {
     name: "Philly Cheesesteak Pizza",
-    description: "Beef Steak, Cheddar Cheese, Red peppers, Green Peppers, Onions, Mushrooms, Mayonnaise, Philly Sauce, Tomato Sauce &...",
+    description: "Beef Steak, Cheddar Cheese, Red peppers, Green Peppers, Onions, Mushrooms, Mayonnaise, Philly Sauce, Tomato Sauce & Cheese.",
     price: "Reg ₦16,600 / Fam ₦19,600",
-    image: "https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=800&auto=format&fit=crop",
     isSignature: true,
   },
 ];
 
-export const staticMenuData = {
+const staticMenuData = {
   PIZZA: pizzas,
   "BURGERS & FRIES": [
     { name: "Classic Beef Burger", description: "Juicy beef burger, grilled onion, tomatoes, salad, burger sauce, with fries.", price: "₦10,800" },
@@ -96,37 +103,50 @@ export const staticMenuData = {
   ],
 };
 
-export async function getMenuData() {
-  if (!sanityClient) {
-    return staticMenuData;
+async function seedData() {
+  if (!process.env.SANITY_API_TOKEN) {
+    console.error("Missing SANITY_API_TOKEN in .env");
+    process.exit(1);
   }
+
+  console.log("Starting to seed Sanity dataset...");
 
   try {
-    const query = `*[_type == "category"] | order(order asc) {
-      title,
-      "items": *[_type == "menuItem" && references(^._id)] {
-        name,
-        description,
-        price,
-        "image": image.asset->url,
-        isSignature
+    let orderIndex = 1;
+    for (const [categoryName, items] of Object.entries(staticMenuData)) {
+      console.log(`\nCreating category: ${categoryName}`);
+      
+      // Create Category
+      const catDoc = await client.create({
+        _type: "category",
+        title: categoryName,
+        order: orderIndex++,
+      });
+      console.log(`✅ Category created with ID: ${catDoc._id}`);
+
+      // Create Menu Items for this Category
+      for (const item of items) {
+        const itemDoc = {
+          _type: "menuItem",
+          name: item.name,
+          description: item.description,
+          price: item.price,
+          category: {
+            _type: "reference",
+            _ref: catDoc._id,
+          },
+          isSignature: (item as any).isSignature || false,
+        };
+
+        const createdItem = await client.create(itemDoc);
+        console.log(`  - Created menu item: ${createdItem.name}`);
       }
-    }`;
-    
-    const categories = await sanityClient.fetch(query);
-    
-    if (!categories || categories.length === 0) {
-      return staticMenuData;
     }
-
-    const formattedData: Record<string, any[]> = {};
-    categories.forEach((cat: any) => {
-      formattedData[cat.title] = cat.items || [];
-    });
-
-    return formattedData;
-  } catch (error) {
-    console.error("Error fetching Sanity menu data:", error);
-    return staticMenuData;
+    
+    console.log("\n🎉 Seeding completed successfully!");
+  } catch (err) {
+    console.error("\n❌ Error during seeding:", err);
   }
 }
+
+seedData();

@@ -1,181 +1,18 @@
 "use client";
 import React, { useState } from "react";
 
-const pizzas = [
-  {
-    name: "Hawaiian",
-    description:
-      "Beef Pepperoni, Pineapple, Garlic Sauce, Tomato Sauce & Cheese.",
-    price: "Reg ₦15,600 / Fam ₦18,600",
-    image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Vegetable Supreme",
-    description:
-      "Tomatoes, Onion, Red Peppers, Green Peppers, Olives, Mushrooms, Sweet corn, Tomato Sauce, Garlic Sauce & Cheese.",
-    price: "Reg ₦14,800 / Fam ₦17,800",
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "BBQ Chicken Special",
-    description:
-      "BBQ Chicken, Onions, Red Peppers, Green Peppers, Tomato Sauce, Garlic Sauce, BBQ Sauce & Cheese.",
-    price: "Reg ₦15,800 / Fam ₦18,800",
-    image:
-      "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Chicken Mexicana",
-    description:
-      "Chicken Breast, Red Peppers, Green peppers, Onions, Tartar Sauce, Chilli Sauce topped with Chilli flakes & Cheese.",
-    price: "Reg ₦15,700 / Fam ₦18,700",
-    image:
-      "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Tandoori Spicy Chicken Pizza",
-    description:
-      "Tandoori Chicken Cubes, Red peppers, Onions, Tomato Sauce, Chilli Sauce & Cheese.",
-    price: "Reg ₦15,500 / Fam ₦18,000",
-    image:
-      "https://images.unsplash.com/photo-1604381536197-5992414777e4?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Pepperoni Pizza",
-    description: "Sliced Beef Pepperoni, Tomato Sauce & Mozzarella Cheese.",
-    price: "Reg ₦14,800 / Fam ₦17,000",
-    image:
-      "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Arabica Pizza",
-    description:
-      "Sliced Beef Pepperoni, Red Peppers, Onions, Mushrooms, Chilli Sauce, Tomato Sauce & Cheese.",
-    price: "Reg ₦15,800 / Fam ₦18,800",
-    image:
-      "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Beef Special",
-    description:
-      "Special Minced Beef, Green Peppers, Onions, Tomato Sauce, BBQ Sauce, Garlic Sauce & Cheese.",
-    price: "Reg ₦15,800 / Fam ₦18,800",
-    image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    name: "Philly Cheesesteak Pizza",
-    description:
-      "Beef Steak, Cheddar Cheese, Red peppers, Green Peppers, Onions, Mushrooms, Mayonnaise, Philly Sauce, Tomato Sauce &...",
-    price: "Reg ₦16,600 / Fam ₦19,600",
-    image:
-      "https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=800&auto=format&fit=crop",
-  },
-];
+interface MenuProps {
+  initialMenuData: Record<string, any[]>;
+}
 
-const menuData = {
-  PIZZA: pizzas,
-  "BURGERS & FRIES": [
-    {
-      name: "Classic Beef Burger",
-      description:
-        "Juicy beef burger, grilled onion, tomatoes, salad, burger sauce, with fries.",
-      price: "₦10,800",
-    },
-    {
-      name: "Swizz Cheese Burger",
-      description:
-        "Beef burger, grilled onion & mushroom, emmental cheese, burger sauce, with fries.",
-      price: "₦11,800",
-    },
-    {
-      name: "Classic Chicken Burger",
-      description:
-        "Minced chicken, garlic sauce, onions, tomatoes, emmental cheese, salad, with fries.",
-      price: "₦11,800",
-    },
-    {
-      name: "Cheese Burger",
-      description:
-        "Beef burger, grilled onions, tomatoes, salad, cheddar cheese, burger sauce, with fries.",
-      price: "₦11,500",
-    },
-    {
-      name: "Double Cheese Burger",
-      description:
-        "Double beef burger, grilled onions, tomatoes, salad, double cheddar, burger sauce, with fries.",
-      price: "₦12,500",
-    },
-    {
-      name: "Mexican Chilli Cheese Burger",
-      description:
-        "Beef burger, grilled onions & pepper, salad, jalapenos, burger sauce, chilli sauce, cheddar, with fries.",
-      price: "₦11,800",
-    },
-    {
-      name: "Tornado BBQ Chicken",
-      description:
-        "Minced chicken with bbq sauce, onion, tomatoes, salad, burger sauce, with fries.",
-      price: "₦11,500",
-    },
-  ],
-  "SUBS & SIDES": [
-    {
-      name: "Philly Cheese Steak Sub",
-      description:
-        "Shredded beef, hp sauce, tabasco, green/red pepper, mushroom, mozzarella, with fries.",
-      price: "₦11,800",
-    },
-    {
-      name: "Fajita Chicken Cheese Sub",
-      description:
-        "Shredded chicken, cumin, paprika, tabasco, green/red pepper, mozzarella, cheddar, with fries.",
-      price: "₦11,800",
-    },
-    {
-      name: "Chicken Wings",
-      description:
-        "Fried wings, ketchup, tabasco, spicy chili, garlic powder, with mayo sauce.",
-      price: "₦7,000",
-    },
-    { name: "Fries", description: "", price: "₦4,800" },
-  ],
-  SALADS: [
-    {
-      name: "Shrimp Salad",
-      description:
-        "Grilled shrimps, lettuce, sweet corn, avocado, cucumber, with cocktail sauce.",
-      price: "₦13,000",
-    },
-    {
-      name: "Mediterranean Salad",
-      description:
-        "Lettuce, sweet corn, tomatoes, cucumber, feta, olives, green pepper, with vinaigrette.",
-      price: "₦11,300",
-    },
-  ],
-  DRINKS: [
-    {
-      name: "Shakes",
-      description:
-        "Oreo Milkshake, Chocolate Vanilla Shake, Vanilla Strawberry, Vanilla Caramel Shake, Strawberry Banana Delight, Peanut Butter Protein Shake.",
-      price: "₦6,800",
-    },
-    {
-      name: "Other Drinks",
-      description:
-        "Chapman (₦2,800), Fruit Punch (₦4,000), Soft Drinks (₦1,000), Water (₦500).",
-      price: "",
-    },
-  ],
-};
+const Menu = ({ initialMenuData }: MenuProps) => {
+  const categories = Object.keys(initialMenuData);
+  const defaultCategory = categories.length > 0 ? categories[0] : "";
+  const [activeCategory, setActiveCategory] = useState(defaultCategory);
 
-const categories = Object.keys(menuData);
-
-const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState("PIZZA");
+  if (!categories.length) {
+    return <div className="min-h-screen bg-[#111] flex items-center justify-center text-white">No menu items found.</div>;
+  }
 
   return (
     <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
@@ -379,7 +216,7 @@ const Menu = () => {
 
         {/* Menu Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {menuData[activeCategory as keyof typeof menuData].map(
+          {initialMenuData[activeCategory]?.map(
             (item, index) => (
               <div
                 key={index}

@@ -2,10 +2,60 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const [orderMethod, setOrderMethod] = useState("delivery");
   const [paymentMethod, setPaymentMethod] = useState("card");
+  
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handlePlaceOrder = async () => {
+    if (!firstName || !lastName || !phone || (orderMethod === "delivery" && !address)) {
+      toast.error("Please fill in all required delivery details.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // Mock cart items based on what's hardcoded in the UI
+      const mockItems = [
+        { itemName: "The Nebula Margherita", quantity: 1, price: 12500 },
+        { itemName: "Supernova Pepperoni", quantity: 1, price: 14000 },
+      ];
+      
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: `${firstName} ${lastName}`,
+          customerPhone: phone,
+          deliveryAddress: orderMethod === "delivery" ? address : "Pickup",
+          totalAmount: 30000,
+          items: mockItems,
+        }),
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        toast.success("Order placed successfully!");
+        setFirstName("");
+        setLastName("");
+        setPhone("");
+        setAddress("");
+      } else {
+        toast.error("Failed to place order. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pb-20 pt-36">
@@ -126,6 +176,8 @@ const Checkout = () => {
                     <input
                       type="text"
                       placeholder="John"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                     />
                   </div>
@@ -136,6 +188,8 @@ const Checkout = () => {
                     <input
                       type="text"
                       placeholder="Doe"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                     />
                   </div>
@@ -148,6 +202,8 @@ const Checkout = () => {
                   <input
                     type="text"
                     placeholder="123 Galactic Boulevard, Suite 4B"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                   />
                 </div>
@@ -160,6 +216,8 @@ const Checkout = () => {
                     <input
                       type="tel"
                       placeholder="+234 (000) 000-0000"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                     />
                   </div>
@@ -460,21 +518,27 @@ const Checkout = () => {
                 </span>
               </div>
 
-              <button className="w-full bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white py-4 rounded-sm flex items-center justify-center gap-2 text-[11px] tracking-widest font-bold uppercase mb-4">
-                Place Order
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
+              <button 
+                onClick={handlePlaceOrder}
+                disabled={isSubmitting}
+                className="w-full bg-[#b43223] hover:bg-[#9a2a1d] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-white py-4 rounded-sm flex items-center justify-center gap-2 text-[11px] tracking-widest font-bold uppercase mb-4"
+              >
+                {isSubmitting ? "Processing..." : "Place Order"}
+                {!isSubmitting && (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                )}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-gray-500 text-[10px]">
