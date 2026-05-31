@@ -1,38 +1,73 @@
-# Free eCommerce Template for Next.js - NextMerce
+# Restaurant eCommerce App (Next.js & Sanity)
 
-The free Next.js eCommerce template is a lite version of the NextMerce Next.js eCommerce boilerplate, designed to streamline the launch and management of your online store.
+A modern, responsive restaurant eCommerce and menu ordering application built with Next.js, Tailwind CSS, and Sanity CMS. This project provides a seamless ordering experience with state management powered by Redux Toolkit and a dynamic menu managed via Sanity.
 
-![NextMerce](https://github.com/user-attachments/assets/57155689-a756-4222-8af7-134e556acae2)
+## 🚀 Features
 
+- **Dynamic Menu Management:** Fetch and display restaurant menus in real-time using Sanity CMS.
+- **Shopping Cart & Checkout:** Seamless cart management and checkout flow using Redux Toolkit.
+- **Multiple Branches:** Support for displaying and navigating multiple restaurant branches.
+- **Authentication:** User authentication powered by Next-Auth.
+- **Responsive Design:** Fully responsive and styled beautifully with Tailwind CSS.
+- **Modern Stack:** Built on the App Router of Next.js for high performance and SEO optimization.
 
-While NextMerce Pro features advanced functionalities, seamless integration, and customizable options, providing all the essential tools needed to build and expand your business, the lite version offers a basic Next.js template specifically crafted for eCommerce websites. Both versions ensure superior performance and flexibility, all powered by Next.js.
+## 💻 Tech Stack
 
-### NextMerce Free VS NextMerce Pro
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/) & React Redux
+- **CMS:** [Sanity](https://www.sanity.io/)
+- **Authentication:** [Next-Auth](https://next-auth.js.org/)
+- **Other Tools:** Swiper (Carousels), Nodemailer, React Hot Toast
 
-| ✨ Features                         | 🎁 NextMerce Free                 | 🔥 NextMerce Pro                        |
-|----------------------------------|--------------------------------|--------------------------------------|
-| Next.js Pages                    | Static                         | Dynamic Boilerplate Template         |
-| Components                       | Limited                        | All According to Demo                |
-| eCommerce Functionality          | Included                       | Included                             |
-| Integrations (DB, Auth, etc.)    | Not Included                   | Included                             |
-| Community Support                | Included                       | Included                             |
-| Premium Email Support            | Not Included                   | Included                             |
-| Lifetime Free Updates            | Included                       | Included                             |
-## Sanity integration
+## 🛠️ Getting Started
 
-This project now includes a Sanity helper in `src/lib/sanity.ts` and a `.env.example` file for project configuration.
+First, install the dependencies if you haven't already:
 
-To connect your site to Sanity:
+```bash
+npm install
+```
+
+Then, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🔐 Environment Variables
+
+Create a `.env` or `.env.local` file in the root directory and copy the contents from `.env.example`:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+# Add any other required variables (e.g., Next-Auth configuration)
+```
+
+## 📝 Sanity CMS Setup
+
+This project uses Sanity to manage restaurant menu items dynamically.
 
 1. Create or use an existing Sanity project.
-2. Set `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` in a local `.env` file.
-3. Add restaurant menu items as `menuItem` documents in Sanity, including `title`, `description`, `price`, and `mainImage`.
-4. The shop pages will automatically fetch menu data from Sanity and fall back to local sample data if the project ID is not configured.
-#### [🚀 Live Demo](https://demo.nextmerce.com/)
+2. Ensure you have your `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` configured in your local environment.
+3. In your Sanity Studio, define documents for `menuItem` with fields such as:
+   - `title`
+   - `description`
+   - `price`
+   - `mainImage`
+4. The frontend menu components will automatically fetch and display this data. (Falls back to local sample data if Sanity is unconfigured).
 
-#### [🌐 Visit Website](https://nextmerce.com/)
+## 📂 Key Project Structure
 
-## Update Logs
-
-Version 0.1.2 - [Mar 16, 2026]
-- Update Next.js, React, and React DOM dependencies, add baseline-browser-mapping
+- `/src/app` - Next.js App Router pages and layouts.
+- `/src/components` - Reusable React components (`Menu`, `Header`, `Footer`, `Branches`, `Checkout`, etc.).
+- `/src/lib` - Utility functions and Sanity helper configuration.
+- `/public` - Static assets.
