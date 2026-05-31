@@ -3,7 +3,7 @@ import React from "react";
 
 const Branches = () => {
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#c89f5a] selection:text-white pt-24 pb-20">
+    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#c89f5a] selection:text-white pt-36 pb-20">
       
       {/* Header Section */}
       <div className="max-w-3xl mx-auto text-center px-4 mb-20 mt-10">
@@ -19,7 +19,7 @@ const Branches = () => {
         <div className="flex flex-col lg:flex-row bg-[#181818] rounded-sm overflow-hidden border border-white/5">
           <div className="w-full lg:w-1/2 aspect-[4/3] lg:aspect-auto relative">
             <img 
-              src="https://images.unsplash.com/photo-1542834369-f81dc3dd3ce9?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop" 
               alt="Abuja Branch Pizza Oven" 
               className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />

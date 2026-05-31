@@ -20,6 +20,15 @@ const config: Config = {
         "Segoe UI",
         "sans-serif",
       ],
+      "eb-garamond": [
+        "EB Garamond",
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        "Times New Roman",
+        "Times",
+        "serif",
+      ],
     },
     container: {
       center: true,

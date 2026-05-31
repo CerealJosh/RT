@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#c95d46] selection:text-white">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center pt-20 pb-16 px-4 overflow-hidden">
+      <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center pt-36 pb-16 px-4 overflow-hidden">
         {/* Background Image / Placeholder */}
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
           <div className="w-[800px] h-[800px] rounded-full bg-gradient-to-b from-transparent to-[#111111] absolute bottom-[-20%] z-10" />
@@ -54,14 +54,14 @@ const Home = () => {
               Galaxy Pizza
             </h2>
 
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 text-[#e0b0b0]">
               We are a second-generation family business established in 1972.
               Galaxy Pizza Abuja is one of its kind Italian & American Pizzeria
               in Abuja. All Pizzas are prepared with a Wood Clay Oven and fresh
               ingredients.
             </p>
 
-            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10">
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10 text-[#e0b0b0]">
               Since opening in 2003, Galaxy Pizza became a leader in its market.
               In 2013, we officially launched our brand identity. Visit Galaxy
               Pizza and discover a magnificent array of ingredients, from our
@@ -75,13 +75,13 @@ const Home = () => {
           </div>
 
           <div className="w-full lg:w-1/2">
-            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-2xl group">
               <img
                 src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=2070&auto=format&fit=crop"
                 alt="Chef making pizza dough"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-black/20"></div>
+              <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
             </div>
           </div>
         </div>

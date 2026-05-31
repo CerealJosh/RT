@@ -48,7 +48,7 @@ const pizzas = [
     name: "Beef Special",
     description: "Special Minced Beef, Green Peppers, Onions, Tomato Sauce, BBQ Sauce, Garlic Sauce & Cheese.",
     price: "Reg ₦15,800 / Fam ₦18,800",
-    image: "https://images.unsplash.com/photo-1542834369-f81dc3dd3ce9?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop"
   },
   {
     name: "Philly Cheesesteak Pizza",
@@ -64,7 +64,7 @@ const Menu = () => {
   const [activeCategory, setActiveCategory] = useState("PIZZA");
 
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-24 pb-20">
+    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
       
       {/* Header Section */}
       <div className="max-w-3xl mx-auto text-center px-4 mb-20 mt-10">
