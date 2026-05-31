@@ -1,19 +1,16 @@
 import React from "react";
-import Menu from "@/components/Menu";
-
 import { Metadata } from "next";
+import Checkout from "@/components/Checkout";
+
 export const metadata: Metadata = {
-  title: "Our Menu | Galaxy Pizza",
-  description:
-    "Explore Galaxy Pizza's full menu — wood-fired pizzas, burgers, subs, salads, and more. Crafted with premium, fresh ingredients.",
+  title: "Checkout | Galaxy Pizza",
+  description: "Securely checkout your Galaxy Pizza order.",
 };
 
-const CheckoutPage = () => {
+export default function CheckoutPage() {
   return (
     <main>
-      <Menu />
+      <Checkout />
     </main>
   );
-};
-
-export default CheckoutPage;
+}

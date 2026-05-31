@@ -241,14 +241,14 @@ const Contact = () => {
           </div>
 
           {/* Hotline Image */}
-          <div className="relative w-full aspect-[16/9] bg-[#151515] rounded-sm overflow-hidden border border-white/5">
+          <div className="relative w-full aspect-[16/9] bg-[#151515] rounded-sm overflow-hidden border border-white/5 group">
             <img
               src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop"
               alt="Contact Hero"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 opacity-80"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-80"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 bg-[#0a0a0a] border border-[#c89f5a]/30 text-[#c89f5a] px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase z-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-6 left-6 bg-[#0a0a0a] border border-[#c89f5a]/30 text-[#c89f5a] px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase z-10 pointer-events-none">
               Hotline Active
             </div>
           </div>
