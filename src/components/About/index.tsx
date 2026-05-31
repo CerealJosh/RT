@@ -27,7 +27,7 @@ const TESTIMONIALS = [
   },
 ];
 
-const TestimonialsCarousel = () => {
+export const TestimonialsCarousel = () => {
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState(null);
