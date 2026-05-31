@@ -1,5 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Product } from "@/types/product";
+
+type Product = {
+  title: string;
+  reviews: number;
+  price: number;
+  discountedPrice?: number;
+  img?: string;
+  images?: string[];
+  id: number;
+  imgs: { thumbnails: string[]; previews: string[] };
+  description?: string;
+  category?: string;
+  allergens?: string[];
+  isVegetarian?: boolean;
+  isGlutenFree?: boolean;
+  status?: string;
+};
 
 type InitialState = {
   value: Product;

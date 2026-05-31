@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Find your nearest Galaxy Pizza location. We have wood-fired pizzerias in Abuja and Lagos, Nigeria.",
 };
 
-const ShopWithSidebarPage = () => {
+const BranchesPage = () => {
   return (
     <main>
       <Branches />
@@ -16,4 +16,4 @@ const ShopWithSidebarPage = () => {
   );
 };
 
-export default ShopWithSidebarPage;
+export default BranchesPage;

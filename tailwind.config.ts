@@ -11,7 +11,15 @@ const config: Config = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      "euclid-circular-a": ["Euclid Circular A"],
+      "hanken-grotesk": [
+        "Hanken Grotesk",
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "sans-serif",
+      ],
     },
     container: {
       center: true,
