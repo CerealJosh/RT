@@ -11,7 +11,7 @@ const Home = () => {
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
           <div className="w-[800px] h-[800px] rounded-full bg-gradient-to-b from-transparent to-[#111111] absolute bottom-[-20%] z-10" />
           <img
-            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
+            src="/images/Hero/home.png"
             alt="Pizza Background"
             className="w-full h-full object-cover object-center opacity-60 mask-image:linear-gradient(to_bottom,rgba(0,0,0,1),rgba(0,0,0,0))"
             style={{
