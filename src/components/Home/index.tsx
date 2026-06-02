@@ -8,30 +8,30 @@ const PIZZAS = [
     name: "Hawaiian",
     description:
       "Beef Pepperoni, Pineapple, Garlic Sauce, Tomato Sauce & Cheese.",
-    image: "/images/menu/hawaiian.png",
+    image: "/images/menu/hawaiian.jpg",
   },
   {
     name: "Vegetable Supreme",
     description:
       "Tomatoes, Onion, Red Peppers, Green Peppers, Olives, Mushrooms, Sweet corn, Tomato Sauce, Garlic Sauce & Cheese.",
-    image: "/images/menu/vegetable.png",
+    image: "/images/menu/vegetable.jpg",
   },
   {
     name: "BBQ Chicken Special",
     description:
       "BBQ Chicken, Onions, Red Peppers, Green Peppers, Tomato Sauce, Garlic Sauce, BBQ Sauce & Cheese.",
-    image: "/images/menu/bbq.png",
+    image: "/images/menu/bbq.jpg",
   },
   {
     name: "Pepperoni Pizza",
     description: "Sliced Beef Pepperoni, Tomato Sauce & Mozzarella Cheese.",
-    image: "/images/menu/pepperoni.png",
+    image: "/images/menu/pepperoni.jpg",
   },
 ];
 
 const Home = () => {
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#c95d46] selection:text-white">
+    <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#c95d46] selection:text-white">
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center py-36 pb-16 px-4 overflow-hidden">
         {/* Background Image / Placeholder */}
@@ -303,21 +303,21 @@ const Home = () => {
       <TestimonialsCarousel />
 
       {/* Ready to Order CTA */}
-      <section className="relative w-full py-36 px-6 md:px-12 lg:px-24 bg-[#111111]">
+      <section className="relative w-full py-20 md:py-36 px-6 md:px-12 lg:px-24 bg-[#111111] overflow-hidden">
+        {/* Combined Image and Overlay Layer */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/images/section/ready.png')",
+            backgroundImage:
+              "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/section/ready.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div
-          className="absolute inset-0 z-10"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.65)" }}
-        />
-        <div className="relative z-20 max-w-2xl mx-auto flex flex-col items-center">
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-white">
+
+        {/* Content Layer */}
+        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center">
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 text-white">
             Ready to Order?
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-10 max-w-lg">
@@ -326,12 +326,8 @@ const Home = () => {
           </p>
           <Link
             href="/menu"
-            className="hidden xl:inline-flex items-center justify-center px-6 py-3 text-white text-sm font-bold tracking-widest uppercase transition-all duration-200 hover:brightness-110 active:scale-95"
-            style={{
-              backgroundColor: "#c0392b",
-              borderRadius: "4px",
-              letterSpacing: "0.1em",
-            }}
+            className="inline-flex items-center justify-center px-6 py-3 text-white text-sm font-bold tracking-widest uppercase transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#c0392b] rounded-[4px]"
+            style={{ letterSpacing: "0.1em" }}
           >
             Order Now
           </Link>

@@ -15,7 +15,7 @@ const Menu = ({ initialMenuData }: MenuProps) => {
   }
 
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
+    <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
       {/* Header Section */}
       <div className="max-w-3xl mx-auto text-center px-4 mb-20 mt-10">
         <h1 className="text-4xl md:text-5xl font-serif mb-6 text-[#e0b0b0]">

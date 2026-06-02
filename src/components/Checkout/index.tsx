@@ -58,7 +58,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pb-20 pt-36">
+    <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pb-20 pt-36">
       <main className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 mt-12">
         <div className="mb-10">
           <h1 className="text-4xl md:text-5xl font-eb-garamond text-gray-100 mb-3">

@@ -3,7 +3,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
+    <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#e0b0b0] selection:text-white pt-36 pb-20">
       {/* Header Section */}
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 mb-16 mt-10">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-[#e0b0b0] max-w-3xl leading-tight">

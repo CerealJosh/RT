@@ -172,7 +172,7 @@ export const TestimonialsCarousel = () => {
 
 const About = () => {
   return (
-    <div className="bg-[#111111] min-h-screen text-white font-sans selection:bg-[#c89f5a] selection:text-white">
+    <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#c89f5a] selection:text-white">
       {/* Arch Hero Section */}
       <section className="w-full pt-32 pb-16 px-4 md:px-12 flex justify-center overflow-hidden">
         <div className="relative w-full h-full flex flex-col items-center justify-center text-center px-6 py-20 mt-10">
