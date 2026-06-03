@@ -174,14 +174,14 @@ const About = () => {
   return (
     <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#c89f5a] selection:text-white">
       {/* Arch Hero Section */}
-      <section className="w-full pt-32 pb-16 px-4 md:px-12 flex justify-center overflow-hidden">
+      <section className="w-full pb-32 flex justify-center overflow-hidden">
         <div className="relative w-full h-full flex flex-col items-center justify-center text-center px-6 py-20 mt-10">
           {/* Background Image Placeholder */}
           <div className="absolute inset-0 z-0">
             <img
-              src="images/Hero/about.png"
-              alt="Wood Pizza Oven"
-              className="w-full h-full object-cover opacity-20 grayscale hover:grayscale-0 transition-all duration-1000"
+              src="https://brickovennj.com/wp-content/uploads/2018/09/oven1.gif"
+              alt="Burning Wood Pizza Oven"
+              className="w-full h-full object-cover opacity-30 grayscale hover:grayscale-0 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent"></div>
           </div>
@@ -253,7 +253,7 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
             {/* Feature 1 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="28"
@@ -278,7 +278,7 @@ const About = () => {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="24"
@@ -303,7 +303,7 @@ const About = () => {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="30"
@@ -326,7 +326,7 @@ const About = () => {
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="20"

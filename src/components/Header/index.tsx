@@ -46,7 +46,7 @@ const Header = () => {
       <div className="max-w-[1170px] mx-auto px-4 sm:px-7.5 xl:px-0">
         <div
           className={`flex items-center justify-between transition-all ease-out duration-200 ${
-            stickyMenu ? "py-3" : "py-4"
+            stickyMenu ? "py-1" : ""
           }`}
         >
           {/* Logo */}

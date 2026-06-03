@@ -1,5 +1,35 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
+const FEATURED_ITEMS = [
+  {
+    tag: "Signature Item",
+    name: "Philly Cheesesteak Pizza",
+    description:
+      "Beef Steak, Cheddar Cheese, Red peppers, Green Peppers, Onions, Mushrooms, Mayonnaise, Philly Sauce, Tomato Sauce & Cheese.",
+    price: "₦16,600 / ₦19,600",
+    image:
+      "https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    tag: "Most Popular",
+    name: "Meat Craver Pizza",
+    description:
+      "Beef Pepperoni, Salami, Minced Meat, Ham, Bacon, Chicken, Tomato Sauce & Cheese.",
+    price: "₦17,000 / ₦20,000",
+    image:
+      "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    tag: "New Entry",
+    name: "Hawaiian Pizza",
+    description:
+      "Beef Pepperoni, Pineapple, Garlic Sauce, Tomato Sauce & Cheese.",
+    price: "₦15,000 / ₦18,000",
+    image:
+      "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1000&auto=format&fit=crop",
+  },
+];
 
 interface MenuProps {
   initialMenuData: Record<string, any[]>;
@@ -10,8 +40,43 @@ const Menu = ({ initialMenuData }: MenuProps) => {
   const defaultCategory = categories.length > 0 ? categories[0] : "";
   const [activeCategory, setActiveCategory] = useState(defaultCategory);
 
+  const [activeFeatured, setActiveFeatured] = useState(0);
+  const [animatingFeatured, setAnimatingFeatured] = useState(false);
+
+  const goToFeatured = useCallback(
+    (index: number) => {
+      if (animatingFeatured || index === activeFeatured) return;
+      setAnimatingFeatured(true);
+      setTimeout(() => {
+        setActiveFeatured(index);
+        setAnimatingFeatured(false);
+      }, 600);
+    },
+    [activeFeatured, animatingFeatured],
+  );
+
+  const prevFeatured = () =>
+    goToFeatured(
+      (activeFeatured - 1 + FEATURED_ITEMS.length) % FEATURED_ITEMS.length,
+    );
+  const nextFeatured = () =>
+    goToFeatured((activeFeatured + 1) % FEATURED_ITEMS.length);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      goToFeatured((activeFeatured + 1) % FEATURED_ITEMS.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, [activeFeatured, goToFeatured]);
+
+  const currentFeatured = FEATURED_ITEMS[activeFeatured];
+
   if (!categories.length) {
-    return <div className="min-h-screen bg-[#111] flex items-center justify-center text-white">No menu items found.</div>;
+    return (
+      <div className="min-h-screen bg-[#111] flex items-center justify-center text-white">
+        No menu items found.
+      </div>
+    );
   }
 
   return (
@@ -48,59 +113,66 @@ const Menu = ({ initialMenuData }: MenuProps) => {
           </h2>
         </div>
 
-        {/* Signature Pizza Card */}
-        <div className="flex flex-col lg:flex-row bg-[#151515] rounded-sm border border-white/5 overflow-hidden mb-12">
-          <div className="w-full lg:w-1/2 relative bg-[#111] p-10 flex items-center justify-center">
-            <div className="absolute top-6 left-6 bg-[#1a1a1a] border border-[#c89f5a]/30 text-[#c89f5a] px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase z-10">
-              Signature Item
-            </div>
-            {/* The signature pizza image placeholder */}
-            <div className="w-[280px] h-[280px] md:w-[380px] md:h-[380px] relative rounded-full overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=1000&auto=format&fit=crop"
-                alt="Philly Cheesesteak Pizza"
-                className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
-              />
-            </div>
-          </div>
-
-          <div className="w-full lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center border-l border-white/5">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#e0b0b0] mb-6">
-              Philly Cheesesteak
-              <br />
-              Pizza
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed mb-12 max-w-md">
-              Beef Steak, Cheddar Cheese, Red peppers, Green Peppers, Onions,
-              Mushrooms, Mayonnaise, Philly Sauce, Tomato Sauce & Cheese.
-            </p>
-
-            <div className="flex items-end justify-between">
-              <div>
-                <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-2 font-bold">
-                  Reg / Fam
-                </p>
-                <p className="text-[#c89f5a] font-serif text-xl">
-                  ₦16,600 / ₦19,600
-                </p>
+        {/* Signature Pizza Carousel */}
+        <div className="relative">
+          <div
+            className="flex flex-col lg:flex-row bg-[#151515] rounded-sm border border-white/5 overflow-hidden mb-12"
+            style={{
+              opacity: animatingFeatured ? 0 : 1,
+              transform: animatingFeatured
+                ? "scale(0.98) translateY(10px)"
+                : "scale(1) translateY(0)",
+              transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <div className="w-full lg:w-1/2 relative bg-[#111] p-10 flex items-center justify-center">
+              <div className="absolute top-6 left-6 bg-[#1a1a1a] border border-[#c89f5a]/30 text-[#c89f5a] px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase z-10">
+                {currentFeatured.tag}
               </div>
-              <button className="border border-white/20 hover:border-[#c89f5a] hover:text-[#c89f5a] transition-colors text-white text-[10px] font-bold tracking-widest uppercase py-3.5 px-6 rounded-sm flex items-center gap-2">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="9" cy="21" r="1" />
-                  <circle cx="20" cy="21" r="1" />
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                </svg>
-                Add To Order
-              </button>
+              <div className="w-[280px] h-[280px] md:w-[380px] md:h-[380px] relative rounded-full overflow-hidden shadow-2xl">
+                <img
+                  src={currentFeatured.image}
+                  alt={currentFeatured.name}
+                  className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
+                />
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/2 p-10 lg:p-14 flex flex-col justify-center border-l border-white/5 relative">
+              <h2 className="text-3xl md:text-4xl font-serif text-[#e0b0b0] mb-6 max-w-sm">
+                {currentFeatured.name}
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed mb-12 max-w-md">
+                {currentFeatured.description}
+              </p>
+
+              <div className="flex items-end justify-between">
+                <div>
+                  <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-2 font-bold">
+                    Reg / Fam
+                  </p>
+                  <p className="text-[#c89f5a] font-serif text-xl">
+                    {currentFeatured.price}
+                  </p>
+                </div>
+                <button className="border border-white/20 hover:border-[#c89f5a] hover:text-[#c89f5a] transition-colors text-white text-[10px] font-bold tracking-widest uppercase py-3.5 px-6 rounded-sm flex items-center gap-2">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                  </svg>
+                  Add To Order
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -216,56 +288,54 @@ const Menu = ({ initialMenuData }: MenuProps) => {
 
         {/* Menu Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {initialMenuData[activeCategory]?.map(
-            (item, index) => (
-              <div
-                key={index}
-                className="bg-[#181818] rounded-sm overflow-hidden flex flex-col border border-white/5 hover:border-white/10 transition-colors group"
-              >
-                {item.image && (
-                  <div className="w-full aspect-[4/3] bg-[#1c1c1c] p-8 flex items-center justify-center relative overflow-hidden">
-                    <div className="w-[180px] h-[180px] rounded-full overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                )}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-serif text-gray-100 mb-3">
-                    {item.name}
-                  </h3>
-                  {item.description && (
-                    <p className="text-gray-400 text-xs leading-relaxed flex-1 mb-6">
-                      {item.description}
-                    </p>
-                  )}
-                  <div className="flex items-center justify-between mt-auto">
-                    <p className="text-[#c89f5a] font-serif text-sm">
-                      {item.price}
-                    </p>
-                    <button className="w-6 h-6 rounded-full bg-[#e0b0b0] hover:bg-[#c89f5a] flex items-center justify-center text-[#111] transition-colors shrink-0">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
-                    </button>
+          {initialMenuData[activeCategory]?.map((item, index) => (
+            <div
+              key={index}
+              className="bg-[#181818] rounded-sm overflow-hidden flex flex-col border border-white/5 hover:border-white/10 transition-colors group"
+            >
+              {item.image && (
+                <div className="w-full aspect-[4/3] bg-[#1c1c1c] p-8 flex items-center justify-center relative overflow-hidden">
+                  <div className="w-[180px] h-[180px] rounded-full overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
+              )}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-serif text-gray-100 mb-3">
+                  {item.name}
+                </h3>
+                {item.description && (
+                  <p className="text-gray-400 text-xs leading-relaxed flex-1 mb-6">
+                    {item.description}
+                  </p>
+                )}
+                <div className="flex items-center justify-between mt-auto">
+                  <p className="text-[#c89f5a] font-serif text-sm">
+                    {item.price}
+                  </p>
+                  <button className="w-6 h-6 rounded-full bg-[#e0b0b0] hover:bg-[#c89f5a] flex items-center justify-center text-[#111] transition-colors shrink-0">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            ),
-          )}
+            </div>
+          ))}
         </div>
 
         {/* Load More Button */}

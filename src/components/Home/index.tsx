@@ -34,6 +34,12 @@ const Home = () => {
     <div className="bg-[#0E0E0E] min-h-screen text-white font-sans selection:bg-[#c95d46] selection:text-white">
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center py-36 pb-16 px-4 overflow-hidden">
+        <style>{`
+          @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(-1%, -1%); }
+          }
+        `}</style>
         {/* Background Image / Placeholder */}
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
           <div className="w-[800px] h-[800px] absolute bottom-[-20%] z-10" />
@@ -45,6 +51,7 @@ const Home = () => {
               maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
               WebkitMaskImage:
                 "radial-gradient(circle, black 40%, transparent 80%)",
+              animation: "kenburns 25s ease-in-out infinite alternate"
             }}
           />
         </div>
@@ -119,7 +126,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
             {/* Feature 1 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="28"
@@ -144,7 +151,7 @@ const Home = () => {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="24"
@@ -169,7 +176,7 @@ const Home = () => {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="30"
@@ -192,7 +199,7 @@ const Home = () => {
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] transition-colors rounded-sm border border-white/5">
+            <div className="bg-[#181818] p-8 flex flex-col items-start hover:bg-[#1c1c1c] hover:border-[#FFB4A7] transition-colors rounded-sm border border-white/5">
               <div className="text-[#FFB4A7] mb-6">
                 <svg
                   width="20"
