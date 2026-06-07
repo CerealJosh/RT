@@ -74,9 +74,9 @@ const Home = () => {
             heritage and culture of authentic Italian cuisine.
           </p>
 
-          <button className="bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white text-xs md:text-sm font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
+          <Link href="/menu" className="inline-flex items-center justify-center bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white text-xs md:text-sm font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
             Explore Menu
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -103,9 +103,9 @@ const Home = () => {
               assured of a warm welcome.
             </p>
 
-            <button className="border border-gray-400 hover:border-white text-gray-300 hover:text-white transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
+            <Link href="/about" className="inline-flex items-center justify-center border border-gray-400 hover:bg-[#ffb4a7] hover:border-[#ffb4a7] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
               Read Our Story
-            </button>
+            </Link>
           </div>
 
           <div className="w-full lg:w-1/2">
@@ -299,9 +299,9 @@ const Home = () => {
           </div>
 
           <div className="flex justify-center mt-12">
-            <button className="border border-gray-500 hover:border-white text-gray-300 hover:text-white transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-10 rounded-sm">
+            <Link href="/menu" className="inline-flex items-center justify-center border border-gray-500 hover:bg-[#ffb4a7] hover:border-[#ffb4a7] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-10 rounded-sm">
               View Full Menu
-            </button>
+            </Link>
           </div>
         </div>
       </section>
