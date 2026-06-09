@@ -10,16 +10,16 @@ const Contact = () => {
           We'd love to hear from you
         </h1>
         <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl">
-          Whether it's a stellar catering request, feedback on your recent
-          voyage, or just sending some cosmic love, our comms channels are open.
+          Whether it's a catering enquiry, feedback on your last visit,
+           or just a kind word, we'd love to hear from you.
         </p>
       </div>
 
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0 flex flex-col lg:flex-row gap-8 lg:gap-12">
-        {/* Left Side: Transmission Form */}
+        {/* Left Side: Contact Form */}
         <div className="w-full lg:w-3/5 bg-[#151515] rounded-sm border border-white/5 p-8 md:p-12">
           <h2 className="text-2xl font-serif text-gray-100 mb-10">
-            Transmission Form
+            Send Us a Message
           </h2>
 
           <form
@@ -29,21 +29,21 @@ const Contact = () => {
             <div className="flex flex-col md:flex-row gap-8">
               <div className="flex flex-col gap-3 w-full md:w-1/2">
                 <label className="text-[#c89f5a] text-[10px] font-bold tracking-widest uppercase">
-                  Astronaut Name
+                  Your Name
                 </label>
                 <input
                   type="text"
-                  placeholder="Commander Shepard"
+                  placeholder="John Smith"
                   className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3.5 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                 />
               </div>
               <div className="flex flex-col gap-3 w-full md:w-1/2">
                 <label className="text-[#c89f5a] text-[10px] font-bold tracking-widest uppercase">
-                  Comms Frequency (Email)
+                  Email Address
                 </label>
                 <input
                   type="email"
-                  placeholder="shepard@normandy.com"
+                  placeholder="john@example.com"
                   className="w-full bg-[#0a0a0a] border border-white/5 text-gray-300 px-4 py-3.5 focus:outline-none focus:border-[#c89f5a]/50 transition-colors rounded-sm text-sm"
                 />
               </div>
@@ -51,7 +51,7 @@ const Contact = () => {
 
             <div className="flex flex-col gap-3 w-full">
               <label className="text-[#c89f5a] text-[10px] font-bold tracking-widest uppercase">
-                Mission Type
+                Reason for Contact
               </label>
               <div className="relative">
                 <select
@@ -61,9 +61,10 @@ const Contact = () => {
                   <option value="" disabled>
                     Select an inquiry type...
                   </option>
-                  <option value="catering">Catering Request</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="general">General Inquiry</option>
+                  <option value="catering">Catering & Private Events</option>
+                  <option value="feedback">Feedback & Reviews</option>
+                  <option value="reservation">Table Reservation</option>
+                  <option value="general">General Enquiry</option>
                 </select>
                 <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                   <svg
@@ -84,7 +85,7 @@ const Contact = () => {
 
             <div className="flex flex-col gap-3 w-full">
               <label className="text-[#c89f5a] text-[10px] font-bold tracking-widest uppercase">
-                Message Log
+                Your Message
               </label>
               <textarea
                 placeholder="Detail your request here..."
@@ -97,7 +98,7 @@ const Contact = () => {
               type="submit"
               className="bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white text-[10px] font-bold tracking-widest uppercase py-4 px-8 rounded-sm w-fit flex items-center gap-2 mt-4"
             >
-              Send Transmission
+              Send Message
               <svg
                 width="14"
                 height="14"
@@ -108,20 +109,18 @@ const Contact = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
             </button>
           </form>
         </div>
 
-        {/* Right Side: Mission Control */}
+        {/* Right Side: Our Details */}
         <div className="w-full lg:w-2/5 flex flex-col gap-8">
           <div className="bg-[#151515] rounded-sm border border-white/5 p-8 md:p-10 flex flex-col gap-8">
             <h2 className="text-2xl font-serif text-[#c89f5a]">
-              Mission Control
+              Our Details
             </h2>
 
             <div className="flex flex-col gap-8">
@@ -230,7 +229,7 @@ const Contact = () => {
                 </svg>
                 <div>
                   <h4 className="text-gray-100 text-sm font-bold mb-2">
-                    Operating Hours
+                    Opening Hours
                   </h4>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     Monday - Sunday: 10am - 10pm
@@ -249,7 +248,7 @@ const Contact = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
             <div className="absolute bottom-6 left-6 bg-[#0a0a0a] border border-[#c89f5a]/30 text-[#c89f5a] px-3 py-1.5 rounded-sm text-[10px] font-bold tracking-widest uppercase z-10 pointer-events-none">
-              Hotline Active
+              Order by Phone
             </div>
           </div>
         </div>

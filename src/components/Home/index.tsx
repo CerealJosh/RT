@@ -51,7 +51,7 @@ const Home = () => {
               maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
               WebkitMaskImage:
                 "radial-gradient(circle, black 40%, transparent 80%)",
-              animation: "kenburns 25s ease-in-out infinite alternate"
+              animation: "kenburns 25s ease-in-out infinite alternate",
             }}
           />
         </div>
@@ -74,7 +74,10 @@ const Home = () => {
             heritage and culture of authentic Italian cuisine.
           </p>
 
-          <Link href="/menu" className="inline-flex items-center justify-center bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white text-xs md:text-sm font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
+          <Link
+            href="/menu"
+            className="inline-flex items-center justify-center bg-[#b43223] hover:bg-[#9a2a1d] transition-colors text-white text-xs md:text-sm font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm"
+          >
             Explore Menu
           </Link>
         </div>
@@ -103,7 +106,10 @@ const Home = () => {
               assured of a warm welcome.
             </p>
 
-            <Link href="/about" className="inline-flex items-center justify-center border border-gray-400 hover:bg-[#ffb4a7] hover:border-[#ffb4a7] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm">
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center border border-gray-400 hover:bg-[#c0392b] hover:border-[#c0392b] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-8 rounded-sm"
+            >
               Read Our Story
             </Link>
           </div>
@@ -299,7 +305,10 @@ const Home = () => {
           </div>
 
           <div className="flex justify-center mt-12">
-            <Link href="/menu" className="inline-flex items-center justify-center border border-gray-500 hover:bg-[#ffb4a7] hover:border-[#ffb4a7] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-10 rounded-sm">
+            <Link
+              href="/menu"
+              className="inline-flex items-center justify-center border border-gray-500 hover:bg-[#c0392b] hover:border-[#c0392b] text-gray-300 hover:text-black transition-all text-xs font-bold tracking-widest uppercase py-3.5 px-10 rounded-sm"
+            >
               View Full Menu
             </Link>
           </div>

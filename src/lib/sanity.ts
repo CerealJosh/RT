@@ -40,7 +40,7 @@ const pizzas = [
     name: "Tandoori Spicy Chicken Pizza",
     description: "Tandoori Chicken Cubes, Red peppers, Onions, Tomato Sauce, Chilli Sauce & Cheese.",
     price: "Reg ₦15,500 / Fam ₦18,000",
-    image: "https://images.unsplash.com/photo-1604381536197-5992414777e4?q=80&w=800&auto=format&fit=crop",
+    image: "/tandoori-spicy-chicken-pizza.png",
   },
   {
     name: "Pepperoni Pizza",
@@ -72,61 +72,30 @@ const pizzas = [
 export const staticMenuData = {
   PIZZA: pizzas,
   "BURGERS & FRIES": [
-    { name: "Classic Beef Burger", description: "Juicy beef burger, grilled onion, tomatoes, salad, burger sauce, with fries.", price: "₦10,800" },
-    { name: "Swizz Cheese Burger", description: "Beef burger, grilled onion & mushroom, emmental cheese, burger sauce, with fries.", price: "₦11,800" },
-    { name: "Classic Chicken Burger", description: "Minced chicken, garlic sauce, onions, tomatoes, emmental cheese, salad, with fries.", price: "₦11,800" },
-    { name: "Cheese Burger", description: "Beef burger, grilled onions, tomatoes, salad, cheddar cheese, burger sauce, with fries.", price: "₦11,500" },
-    { name: "Double Cheese Burger", description: "Double beef burger, grilled onions, tomatoes, salad, double cheddar, burger sauce, with fries.", price: "₦12,500" },
-    { name: "Mexican Chilli Cheese Burger", description: "Beef burger, grilled onions & pepper, salad, jalapenos, burger sauce, chilli sauce, cheddar, with fries.", price: "₦11,800" },
-    { name: "Tornado BBQ Chicken", description: "Minced chicken with bbq sauce, onion, tomatoes, salad, burger sauce, with fries.", price: "₦11,500" },
+    { name: "Classic Beef Burger", description: "Juicy beef burger, grilled onion, tomatoes, salad, burger sauce, with fries.", price: "₦10,800", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" },
+    { name: "Swizz Cheese Burger", description: "Beef burger, grilled onion & mushroom, emmental cheese, burger sauce, with fries.", price: "₦11,800", image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=800&auto=format&fit=crop" },
+    { name: "Classic Chicken Burger", description: "Minced chicken, garlic sauce, onions, tomatoes, emmental cheese, salad, with fries.", price: "₦11,800", image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=800&auto=format&fit=crop" },
+    { name: "Cheese Burger", description: "Beef burger, grilled onions, tomatoes, salad, cheddar cheese, burger sauce, with fries.", price: "₦11,500", image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" },
+    { name: "Double Cheese Burger", description: "Double beef burger, grilled onions, tomatoes, salad, double cheddar, burger sauce, with fries.", price: "₦12,500", image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop" },
+    { name: "Mexican Chilli Cheese Burger", description: "Beef burger, grilled onions & pepper, salad, jalapenos, burger sauce, chilli sauce, cheddar, with fries.", price: "₦11,800", image: "/mexican-chilli-cheese-burger.png" },
+    { name: "Tornado BBQ Chicken", description: "Minced chicken with bbq sauce, onion, tomatoes, salad, burger sauce, with fries.", price: "₦11,500", image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=800&auto=format&fit=crop" },
   ],
   "SUBS & SIDES": [
-    { name: "Philly Cheese Steak Sub", description: "Shredded beef, hp sauce, tabasco, green/red pepper, mushroom, mozzarella, with fries.", price: "₦11,800" },
-    { name: "Fajita Chicken Cheese Sub", description: "Shredded chicken, cumin, paprika, tabasco, green/red pepper, mozzarella, cheddar, with fries.", price: "₦11,800" },
-    { name: "Chicken Wings", description: "Fried wings, ketchup, tabasco, spicy chili, garlic powder, with mayo sauce.", price: "₦7,000" },
-    { name: "Fries", description: "", price: "₦4,800" },
+    { name: "Philly Cheese Steak Sub", description: "Shredded beef, hp sauce, tabasco, green/red pepper, mushroom, mozzarella, with fries.", price: "₦11,800", image: "/philly-cheese-steak-sub.png" },
+    { name: "Fajita Chicken Cheese Sub", description: "Shredded chicken, cumin, paprika, tabasco, green/red pepper, mozzarella, cheddar, with fries.", price: "₦11,800", image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=800&auto=format&fit=crop" },
+    { name: "Chicken Wings", description: "Fried wings, ketchup, tabasco, spicy chili, garlic powder, with mayo sauce.", price: "₦7,000", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=800&auto=format&fit=crop" },
+    { name: "Fries", description: "", price: "₦4,800", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop" },
   ],
   SALADS: [
-    { name: "Shrimp Salad", description: "Grilled shrimps, lettuce, sweet corn, avocado, cucumber, with cocktail sauce.", price: "₦13,000" },
-    { name: "Mediterranean Salad", description: "Lettuce, sweet corn, tomatoes, cucumber, feta, olives, green pepper, with vinaigrette.", price: "₦11,300" },
+    { name: "Shrimp Salad", description: "Grilled shrimps, lettuce, sweet corn, avocado, cucumber, with cocktail sauce.", price: "₦13,000", image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop" },
+    { name: "Mediterranean Salad", description: "Lettuce, sweet corn, tomatoes, cucumber, feta, olives, green pepper, with vinaigrette.", price: "₦11,300", image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop" },
   ],
   DRINKS: [
-    { name: "Shakes", description: "Oreo Milkshake, Chocolate Vanilla Shake, Vanilla Strawberry, Vanilla Caramel Shake, Strawberry Banana Delight, Peanut Butter Protein Shake.", price: "₦6,800" },
-    { name: "Other Drinks", description: "Chapman (₦2,800), Fruit Punch (₦4,000), Soft Drinks (₦1,000), Water (₦500).", price: "" },
+    { name: "Shakes", description: "Oreo Milkshake, Chocolate Vanilla Shake, Vanilla Strawberry, Vanilla Caramel Shake, Strawberry Banana Delight, Peanut Butter Protein Shake.", price: "₦6,800", image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=800&auto=format&fit=crop" },
+    { name: "Other Drinks", description: "Chapman (₦2,800), Fruit Punch (₦4,000), Soft Drinks (₦1,000), Water (₦500).", price: "", image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=800&auto=format&fit=crop" },
   ],
 };
 
 export async function getMenuData() {
-  if (!sanityClient) {
-    return staticMenuData;
-  }
-
-  try {
-    const query = `*[_type == "category"] | order(order asc) {
-      title,
-      "items": *[_type == "menuItem" && references(^._id)] {
-        name,
-        description,
-        price,
-        "image": image.asset->url,
-        isSignature
-      }
-    }`;
-    
-    const categories = await sanityClient.fetch(query);
-    
-    if (!categories || categories.length === 0) {
-      return staticMenuData;
-    }
-
-    const formattedData: Record<string, any[]> = {};
-    categories.forEach((cat: any) => {
-      formattedData[cat.title] = cat.items || [];
-    });
-
-    return formattedData;
-  } catch (error) {
-    console.error("Error fetching Sanity menu data:", error);
-    return staticMenuData;
-  }
+  return staticMenuData;
 }

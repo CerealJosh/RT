@@ -294,14 +294,12 @@ const Menu = ({ initialMenuData }: MenuProps) => {
               className="bg-[#181818] rounded-sm overflow-hidden flex flex-col border border-white/5 hover:border-white/10 transition-colors group"
             >
               {item.image && (
-                <div className="w-full aspect-[4/3] bg-[#1c1c1c] p-8 flex items-center justify-center relative overflow-hidden">
-                  <div className="w-[180px] h-[180px] rounded-full overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                <div className="w-full aspect-[4/3] relative overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               )}
               <div className="p-6 flex flex-col flex-1">
